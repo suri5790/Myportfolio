@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - D. Satwik</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-elements"></div>
+    <div class="parallax-bg parallax-bg-1"></div>
+    <div class="parallax-bg parallax-bg-2"></div>
+    <div class="parallax-bg parallax-bg-3"></div>
+    <nav>
+        <div class="nav-logo">DSK'S PORTFOLIO</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+        </div>
+        <button class="nav-contact"><a href="contact.html" style="color: inherit; text-decoration: none;">Contact
+                DSK</a></button>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-btn" onclick="toggleMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" onclick="toggleMenu()">Home</a>
+        <a href="projects.html" onclick="toggleMenu()">Projects</a>
+        <a href="about.html" onclick="toggleMenu()">About</a>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h1>My Projects</h1>
+            <p>
+                Explore my portfolio of innovative web development projects that showcase my expertise in modern
+                technologies, creative design, and interactive experiences. Each project reflects my passion for clean
+                code and user-centered design.
+            </p>
+            <div class="project-grid">
+                <div class="project-item" onclick="openProjectModal(0)">
+                    <div class="project-item-image">
+                        <img src="images/biznova2.jpeg" alt="BizNova Project"
+                            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder biznova-placeholder\'><i class=\'fas fa-rocket\'></i><span>BizNova</span><small>Business Platform</small></div>'">
+                    </div>
+                    <h3>BizNova</h3>
+                    <p>
+                        A full-stack business management platform for scalable growth and digital operations.
+                    </p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Tailwind CSS</span>
+                        <span>TypeScript</span>
+                        <span>Node.js</span>
+                        <span>Express.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="project-item" onclick="openProjectModal(1)">
+                    <div class="project-item-image">
+                        <img src="images/secondbraincover.png" alt="E-commerce Platform"
+                            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'><i class=\'fas fa-shopping-cart\'></i><span>E-commerce</span></div>'">
+                    </div>
+<h3>Second Brain</h3>
+<p>
+    A personal knowledge management app to save and organize Twitter and YouTube links efficiently.
+</p>
+<div class="project-tech">
+    <span>TypeScript</span>
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>Tailwind CSS</span>
+    <span>Node.js</span>
+    <span>MongoDB</span>
+</div>
+</div>
+
+              <div class="project-item" onclick="openProjectModal(2)">
+    <div class="project-item-image">
+        <img src="images/amazonclonecover.png" alt="Amazon CSS Clone"
+            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'><i class=\'fas fa-shopping-bag\'></i><span>Amazon Clone</span></div>'">
+    </div>
+    <h3>Amazon UI Clone</h3>
+    <p>
+        A basic Amazon homepage UI clone built using only HTML and CSS, focusing on layout,
+        responsiveness, and visual accuracy.
+    </p>
+    <div class="project-tech">
+        <span>HTML</span>
+        <span>CSS</span>
+    </div>
+</div>
+<div class="project-item" onclick="openProjectModal(3)">
+    <div class="project-item-image">
+        <img src="images/rockpapaerscissorcover.png" alt="Stone Paper Scissors Game"
+            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'><i class=\'fas fa-hand-rock\'></i><span>Stone Paper Scissors</span></div>'">
+    </div>
+    <h3>Stone Paper Scissors Game</h3>
+    <p>
+        A simple and interactive Stone–Paper–Scissors game built using HTML, CSS, and JavaScript.
+    </p>
+    <div class="project-tech">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+    </div>
+</div>
+            <div class="buttons">
+                
+                <button onclick="window.open('https://github.com/Satwik2529')">GitHub</button>
+            </div>
+        </div>
+      
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="project-details">
+                    <div class="project-media">
+                        <div class="image-gallery" id="imageGallery" style="display: none;">
+                            <button class="gallery-nav prev" onclick="changeImage(-1)">&#10094;</button>
+                            <img id="galleryImage" src="" alt="Project Screenshot">
+                            <button class="gallery-nav next" onclick="changeImage(1)">&#10095;</button>
+                            <div class="gallery-indicators" id="galleryIndicators"></div>
+                        </div>
+                        <video id="modalVideo" controls
+                            style="display: none; width: 100%; max-height: 400px; border-radius: 8px;">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <div class="info-section">
+                            <h3><i class="fas fa-info-circle"></i> Project Overview</h3>
+                            <p id="modalDescription"></p>
+                        </div>
+                        <div class="info-section">
+                            <h3><i class="fas fa-code"></i> Tech Stack</h3>
+                            <div id="modalTechStack" class="tech-stack"></div>
+                        </div>
+                        <div class="info-section">
+                            <h3><i class="fas fa-list-check"></i> Key Features</h3>
+                            <ul id="modalFeatures"></ul>
+                        </div>
+                        <div class="project-links">
+                            <a id="deployLink" href="#" target="_blank" class="project-link deploy-link">
+                                <i class="fas fa-external-link-alt"></i> View Live Demo
+                            </a>
+                            <a id="githubLink" href="#" target="_blank" class="project-link github-link">
+                                <i class="fab fa-github"></i> View Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            overlay.classList.toggle('active');
+
+            // Toggle body overflow when menu is open
+            if (mobileMenu.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const overlay = document.getElementById('overlay');
+
+            if (mobileMenu.classList.contains('open') &&
+                !mobileMenu.contains(event.target) &&
+                !hamburger.contains(event.target)) {
+                toggleMenu();
+            }
+        });
+
+        // Project data
+        const projects = [
+            {
+                title: "BizNova",
+                description: "A full-stack business management and growth platform designed to help startups and enterprises manage operations, track progress, and scale efficiently with a modern and intuitive user interface.",
+                techStack: [
+                    "React",
+                    "Tailwind CSS",
+                    "TypeScript",
+                    "Node.js",
+                    "Express.js",
+                    "MongoDB"
+                ],
+                features: [
+                    "Secure authentication and role-based access",
+                    "Dynamic dashboards with real-time data",
+                    "RESTful APIs for scalable backend operations",
+                    "CRUD operations with MongoDB integration",
+                    "Modern and responsive UI for all devices"
+                ],
+                images: [
+                    "images/newimage.jpeg",
+                    "images/biznova3.jpeg",
+                    "images/biznova4.jpeg",
+                    "images/biznova5.jpeg",
+                    "images/biznova6.jpeg",
+                    "images/biznova7.jpeg",
+                    "images/biznova8.jpeg",
+                    "images/biznova9.jpeg",
+                    "images/biznova10.jpeg",
+                    
+                ],
+                deployLink: "https://biznova.onrender.com/",
+                githubLink: "https://github.com/Satwik2529/biznova"
+            },
+          {
+                 title: "Second Brain",
+                 description: "A personal knowledge management application that helps users save, organize, and revisit Twitter and YouTube links in a structured and searchable way, acting as a digital second brain.",
+            techStack: [
+        "TypeScript",
+        "HTML",
+        "CSS",
+         "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB"
+    ],
+    features: [
+        "Save and organize Twitter and YouTube links",
+        "Tag-based and category-based organization",
+        "Fast search and filtering of saved content",
+        "Clean and minimal UI for distraction-free usage",
+        "Secure backend for storing user data"
+    ],
+    images: ["images/secondbrain1.png",
+    "images/secondbrain2.png",
+    "images/secindbrain3.png",
+    "images/secondbrain4.png"],
+    deployLink: "https://satwik2529.github.io/secondbrain/",
+    githubLink: "https://github.com/Satwik2529/secondbrain"
+},
+         {
+    title: "Amazon UI Clone",
+    description: "A basic clone of the Amazon homepage built using only HTML and CSS, focusing on layout structure, styling, and responsive design.",
+    techStack: [
+        "HTML",
+        "CSS"
+    ],
+    features: [
+        "Amazon-style navigation bar and header",
+        "Product grid layout with cards",
+        "Hero banner and promotional sections",
+        "Responsive layout using CSS Flexbox and Grid",
+        "Clean and structured UI design"
+    ],
+    images: ["images/amazonclone1.png",
+    "images/amazonclone2.png",
+    "images/amazonclone3.png",],
+    deployLink: "#",
+    githubLink: "https://github.com/dsatwik/amazon-ui-clone"
+},
+         {
+    title: "Rock Paper Scissors Game",
+    description: "A simple and interactive Rock Paper Scissors game built using HTML, CSS, and JavaScript. The game allows users to play against the computer with real-time result display and score tracking.",
+    techStack: [
+        "HTML",
+        "CSS",
+        "JavaScript"
+    ],
+    features: [
+        "User vs Computer gameplay",
+        "Interactive buttons for Rock, Paper, and Scissors",
+        "Random computer choice generation",
+        "Live result display (Win / Lose / Draw)",
+        "Score tracking for player and computer",
+        "Clean and responsive UI design"
+    ],
+    images: ["images/rockgame.png","images/rockgame1.png",
+    "images/rockgame2.png",],
+    deployLink: "https://satwik2529.github.io/rockpaperscissiors/",
+    githubLink: "https://github.com/Satwik2529/rockpaperscissiors/tree/master"
+},     ];
+
+        // Modal functions
+        function openProjectModal(projectIndex) {
+            const project = projects[projectIndex];
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalTechStack = document.getElementById('modalTechStack');
+            const modalFeatures = document.getElementById('modalFeatures');
+            const modalImage = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
+            const deployLink = document.getElementById('deployLink');
+            const githubLink = document.getElementById('githubLink');
+
+            // Populate modal content
+            modalTitle.textContent = project.title;
+            modalDescription.textContent = project.description;
+
+            // Handle media (images or video) with gallery support
+            const imageGallery = document.getElementById('imageGallery');
+            const galleryImage = document.getElementById('galleryImage');
+            const galleryIndicators = document.getElementById('galleryIndicators');
+
+            imageGallery.style.display = 'none';
+            modalVideo.style.display = 'none';
+
+            // Store current project images globally for navigation
+            window.currentProjectImages = [];
+            window.currentImageIndex = 0;
+
+            if (project.media && project.media.type === 'video') {
+                // Handle video
+                modalVideo.style.display = 'block';
+                modalVideo.src = project.media.src;
+                modalVideo.load();
+            } else if (project.images && project.images.length > 0) {
+                // Handle multiple images with gallery
+                window.currentProjectImages = project.images;
+                window.currentImageIndex = 0;
+                imageGallery.style.display = 'block';
+                loadGalleryImage(0);
+                updateGalleryIndicators();
+            } else if (project.image) {
+                // Legacy single image support
+                window.currentProjectImages = [project.image];
+                window.currentImageIndex = 0;
+                imageGallery.style.display = 'block';
+                loadGalleryImage(0);
+                updateGalleryIndicators();
+            }
+
+            // Tech stack
+            modalTechStack.innerHTML = '';
+            project.techStack.forEach(tech => {
+                const techSpan = document.createElement('span');
+                techSpan.className = 'tech-item';
+                techSpan.textContent = tech;
+                modalTechStack.appendChild(techSpan);
+            });
+
+            // Features
+            modalFeatures.innerHTML = '';
+            project.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                modalFeatures.appendChild(li);
+            });
+
+            // Links
+            deployLink.href = project.deployLink;
+            githubLink.href = project.githubLink;
+
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Gallery functions
+        function loadGalleryImage(index) {
+            const galleryImage = document.getElementById('galleryImage');
+            const images = window.currentProjectImages;
+
+            if (images && images.length > 0) {
+                galleryImage.src = images[index];
+                galleryImage.alt = `Project Screenshot ${index + 1}`;
+
+                // Add error handling
+                galleryImage.onerror = function () {
+                    console.warn('Failed to load gallery image:', this.src);
+                    this.src = 'https://via.placeholder.com/600/400/e74c3c/ffffff?text=No+Image+Found';
+                    this.alt = 'Image failed to load';
+                };
+
+                galleryImage.onload = function () {
+                    console.log('Successfully loaded gallery image:', this.src);
+                };
+            }
+        }
+
+        function changeImage(direction) {
+            const images = window.currentProjectImages;
+            if (!images || images.length <= 1) return;
+
+            window.currentImageIndex += direction;
+            if (window.currentImageIndex < 0) {
+                window.currentImageIndex = images.length - 1;
+            } else if (window.currentImageIndex >= images.length) {
+                window.currentImageIndex = 0;
+            }
+
+            loadGalleryImage(window.currentImageIndex);
+            updateGalleryIndicators();
+        }
+
+        function updateGalleryIndicators() {
+            const indicators = document.getElementById('galleryIndicators');
+            const images = window.currentProjectImages;
+
+            if (!images || images.length <= 1) {
+                indicators.innerHTML = '';
+                return;
+            }
+
+            indicators.innerHTML = '';
+            for (let i = 0; i < images.length; i++) {
+                const dot = document.createElement('span');
+                dot.className = `indicator ${i === window.currentImageIndex ? 'active' : ''}`;
+                dot.onclick = () => {
+                    window.currentImageIndex = i;
+                    loadGalleryImage(i);
+                    updateGalleryIndicators();
+                };
+                indicators.appendChild(dot);
+            }
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeProjectModal();
+            }
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeProjectModal();
+            }
+
+            // Gallery navigation with arrow keys
+            if (document.getElementById('projectModal').style.display === 'block') {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact D. Satwik - Web Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+
+<body>
+    <div class="background-elements"></div>
+    <nav>
+        <div class="nav-logo">DSK'S PORTFOLIO</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+        </div>
+        <button class="nav-contact"><a href="contact.html" style="color: inherit; text-decoration: none;">Contact
+                DSK</a></button>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-btn" onclick="toggleMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" onclick="toggleMenu()">Home</a>
+        <a href="projects.html" onclick="toggleMenu()">Projects</a>
+        <a href="about.html" onclick="toggleMenu()">About</a>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h1>Contact Me</h1>
+            <p>
+                Ready to bring your ideas to life? Get in touch with me today. I'm here to help you create amazing
+                digital experiences and turn your vision into reality.
+            </p>
+            <div class="contact-form">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="from_name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="from_email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn">Send Message</button>
+                    <div id="status-message" style="margin-top: 10px; display: none;"></div>
+                </form>
+            </div>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>satwik2529@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>7981069293</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span> abviiitm-gwalior</span>
+                </div>
+            </div>
+        </div>
+        <div class="bg-main-container">
+    <div class="bg-main">
+  <img 
+  src="./images/contactpic.png"
+  alt="Background Image"
+  class="bg-image"
+/>
+
+
+</div>
+
+</div>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            overlay.classList.toggle('active');
+
+            // Toggle body overflow when menu is open
+            if (mobileMenu.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const overlay = document.getElementById('overlay');
+
+            if (mobileMenu.classList.contains('open') &&
+                !mobileMenu.contains(event.target) &&
+                !hamburger.contains(event.target)) {
+                toggleMenu();
+            }
+        });
+
+        // EmailJS functionality with fallback
+        let emailjsLoaded = false;
+
+        // Check if EmailJS is loaded
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init('vlTnjf9xjKi_syL4-'); // Replace with your EmailJS public key
+            emailjsLoaded = true;
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            const statusMessage = document.getElementById('status-message');
+            const originalText = submitBtn.textContent;
+
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            statusMessage.style.display = 'none';
+
+            if (emailjsLoaded) {    
+                // Use EmailJS if available
+                const templateParams = {
+                    from_name: document.getElementById('name').value,
+                    from_email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value,
+                    to_email: 'satwik2529@gmail.com'
+                };
+
+                emailjs.send('service_it4h1ia', 'template_udsabff', templateParams)
+                    .then(function (response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        statusMessage.style.display = 'block';
+                        statusMessage.style.color = '#28a745';
+                        statusMessage.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                        document.getElementById('contact-form').reset();
+                    }, function (error) {
+                        console.log('FAILED...', error);
+                        // Fallback to mailto
+                        useMailtoFallback();
+                    })
+                    .finally(function () {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    });
+            } else {
+                // Fallback to mailto if EmailJS not configured
+                useMailtoFallback();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        function useMailtoFallback() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const mailtoLink = `mailto:satwik2529@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            )}`;
+
+            window.location.href = mailtoLink;
+
+            const statusMessage = document.getElementById('status-message');
+            statusMessage.style.display = 'block';
+            statusMessage.style.color = '#17a2b8';
+            statusMessage.textContent = 'Opening your email client... If it doesn\'t open, please email me directly at satwik2529@gmail.com';
+        }
+    </script>
+</body>
+
+</html>

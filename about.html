@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About D. Satwik - Web Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-elements"></div>
+    <nav>
+        <div class="nav-logo">DSK'S PORTFOLIO</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+        </div>
+        <button class="nav-contact"><a href="contact.html" style="color: inherit; text-decoration: none;">Contact
+                DSK</a></button>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-btn" onclick="toggleMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="index.html" onclick="toggleMenu()">Home</a>
+        <a href="projects.html" onclick="toggleMenu()">Projects</a>
+        <a href="about.html" onclick="toggleMenu()">About</a>
+    </div>
+
+    <div class="container">
+        <div class="content about-content">
+            <h1>About Me</h1>
+            <p>
+                Hi, I'm D. Satwik, a passionate web developer dedicated to creating innovative digital experiences.
+                I specialize in modern web technologies, bringing creative ideas to life through clean code and stunning
+                designs.
+            </p>
+            <p>
+                <p>
+    With a strong foundation in full-stack development using the MERN stack, I focus on building
+    scalable web applications with clean architecture, efficient logic, and smooth, user-friendly
+    interfaces.
+</p>
+
+            </p>
+            <div class="buttons about-buttons">
+                <button onclick="toggleSkillsSection()">My Skills</button>
+               
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="skills-section" id="skillsSection" style="display: none;">
+            <h2>My Skills</h2>
+            <p class="skills-intro">Here are the technologies and concepts I work with to bring ideas to life</p>
+
+            <!-- Programming Languages -->
+            <div class="skill-group">
+                <h3 class="group-title">
+                    <i class="fas fa-code"></i>
+                    Programming Languages
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-card"
+                        onclick="showSkillModal('C', 'A powerful systems programming language known for its performance and low-level memory manipulation capabilities.')">
+                        <div class="skill-icon">
+                            <i class="fab fa-cuttlefish"></i>
+                        </div>
+                        <span class="skill-name">C</span>
+                    </div>
+                    <div class="skill-card"
+                        onclick="showSkillModal('C++', 'An extension of C with object-oriented programming features, widely used for system software, game development, and performance-critical applications.')">
+                        <div class="skill-icon">
+                            <i class="fab fa-cuttlefish"></i>
+                        </div>
+                        <span class="skill-name">C++</span>
+                    </div>
+                    <div class="skill-card"
+                        onclick="showSkillModal('JavaScript', 'A versatile programming language primarily used for web development, enabling interactive and dynamic web applications.')">
+                        <div class="skill-icon">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                    <div class="skill-card"
+                        onclick="showSkillModal('TypeScript', 'A superset of JavaScript that adds static typing, making it easier to write and maintain large-scale applications.')">
+                        <div class="skill-icon">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <span class="skill-name">TypeScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Databases & Tools -->
+            <div class="skill-group">
+                <h3 class="group-title">
+                    <i class="fas fa-database"></i>
+                    Databases & Tools
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-card"
+                        onclick="showSkillModal('MongoDB', 'A NoSQL document database known for its flexibility, scalability, and ease of use in modern web applications.')">
+                        <div class="skill-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <span class="skill-name">MongoDB</span>
+                    </div>
+                    <div class="skill-card"
+                        onclick="showSkillModal('PostgreSQL', 'An advanced open-source relational database with powerful features for complex queries and data integrity.')">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <span class="skill-name">PostgreSQL</span>
+                    </div>
+                    <div class="skill-card"
+                        onclick="showSkillModal('Postman', 'A popular API testing tool that simplifies the process of developing, testing, and documenting APIs.')">
+                        <div class="skill-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <span class="skill-name">Postman</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frontend & Frameworks -->
+            <div class="skill-group">
+                <h3 class="group-title">
+                    <i class="fas fa-palette"></i>
+                    Frontend & Frameworks
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-card"
+                        onclick="showSkillModal('React', 'A popular JavaScript library for building user interfaces, known for its component-based architecture and virtual DOM.')">
+                        <div class="skill-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <span class="skill-name">React</span>
+                    </div>
+                    <div class="skill-card"
+                        onclick="showSkillModal('Tailwind CSS', 'A utility-first CSS framework that provides low-level utility classes to build custom designs without leaving your HTML.')">
+                        <div class="skill-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <span class="skill-name">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Concepts -->
+            <div class="skill-group">
+                <h3 class="group-title">
+                    <i class="fas fa-brain"></i>
+                    Core Concepts
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-card"
+                        onclick="showSkillModal('Data Structures & Algorithms', 'Fundamental concepts for efficient problem-solving, including arrays, trees, graphs, sorting, and searching algorithms.')">
+                        <div class="skill-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <span class="skill-name">DSA</span>
+                    </div>
+                    <div class="skill-card"
+                        onclick="showSkillModal('Object-Oriented Programming', 'A programming paradigm based on objects and classes, emphasizing encapsulation, inheritance, and polymorphism.')">
+                        <div class="skill-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <span class="skill-name">OOP</span>
+                    </div>
+                    <div class="skill-card"
+                        onclick="showSkillModal('Operating Systems', 'Knowledge of OS concepts including process management, memory management, file systems, and system calls.')">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <span class="skill-name">OS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-main-container">
+            <div class="bg-main about-image-container">
+                <img src="images/about.png" alt="About D. Satwik"
+                    style="width: 80%; height: 100%; object-fit: cover; border-radius: 50px;"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 10px;\'>About Me</div>';">
+            </div>
+        </div>
+    </div>
+
+    <!-- Skill Modal -->
+    <div id="skillModal" class="skill-modal">
+        <div class="skill-modal-content">
+            <span class="skill-modal-close" onclick="closeSkillModal()">&times;</span>
+            <div class="skill-modal-header">
+                <div class="skill-modal-icon">
+                    <i id="modalSkillIcon" class="fas fa-code"></i>
+                </div>
+                <h2 id="modalSkillTitle">Skill Name</h2>
+            </div>
+            <div class="skill-modal-body">
+                <p id="modalSkillDescription">Skill description goes here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            overlay.classList.toggle('active');
+
+            // Toggle body overflow when menu is open
+            if (mobileMenu.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const overlay = document.getElementById('overlay');
+
+            if (mobileMenu.classList.contains('open') &&
+                !mobileMenu.contains(event.target) &&
+                !hamburger.contains(event.target)) {
+                toggleMenu();
+            }
+        });
+
+        // Skills Section Toggle
+        function toggleSkillsSection() {
+            const skillsSection = document.getElementById('skillsSection');
+            const button = event.target;
+
+            if (skillsSection.style.display === 'none' || skillsSection.style.display === '') {
+                skillsSection.style.display = 'block';
+                button.textContent = 'Hide Skills';
+                // Smooth scroll to skills section
+                setTimeout(() => {
+                    skillsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            } else {
+                skillsSection.style.display = 'none';
+                button.textContent = 'My Skills';
+            }
+        }
+
+        // Skill Modal Functions
+        function showSkillModal(skillName, description) {
+            const modal = document.getElementById('skillModal');
+            const title = document.getElementById('modalSkillTitle');
+            const desc = document.getElementById('modalSkillDescription');
+            const icon = document.getElementById('modalSkillIcon');
+
+            title.textContent = skillName;
+            desc.textContent = description;
+
+            // Set appropriate icon based on skill
+            const iconMap = {
+                'C': 'fab fa-cuttlefish',
+                'C++': 'fab fa-cuttlefish',
+                'JavaScript': 'fab fa-js-square',
+                'TypeScript': 'fab fa-js-square',
+                'MongoDB': 'fas fa-leaf',
+                'PostgreSQL': 'fas fa-database',
+                'Postman': 'fas fa-paper-plane',
+                'React': 'fab fa-react',
+                'Tailwind CSS': 'fas fa-wind',
+                'Data Structures & Algorithms': 'fas fa-project-diagram',
+                'Object-Oriented Programming': 'fas fa-cubes',
+                'Operating Systems': 'fas fa-server'
+            };
+
+            icon.className = iconMap[skillName] || 'fas fa-code';
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Add animation class
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        }
+
+        function closeSkillModal() {
+            const modal = document.getElementById('skillModal');
+            modal.classList.remove('active');
+
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('skillModal').addEventListener('click', function (event) {
+            if (event.target === this) {
+                closeSkillModal();
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('skillModal');
+                if (modal.style.display === 'block') {
+                    closeSkillModal();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
