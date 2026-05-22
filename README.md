@@ -23,4 +23,4 @@ This is my personal portfolio website built to showcase my projects, skills, and
 ## How to Run Locally
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Satwik2529/portfolio.git
+   git clone https://github.com/suri5790/portfolio.git
